@@ -60,7 +60,7 @@ This function writes dict object into yaml file. It takes following parameters
 
 **Return:**  nil 
 
-### getYamlData
+### GetYamlData
 
 This function returns dict object from yaml file. it takes following parameters
 
