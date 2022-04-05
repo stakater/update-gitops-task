@@ -4,12 +4,14 @@ import yaml
 import re
 
 
+
 def GitClone(repo,dest,user="",password=""):
    if(user!="" and password != ""):
          index = repo.find("github")
          repo=repo[:index]+user+":"+password+"@"+repo[index:]
    cloned_repo=Repo.clone_from(repo,dest)
-
+   return cloned_repo
+   
 
 
 def UpdateChartFile(source,imageVersion):
@@ -24,7 +26,19 @@ def UpdateChartFile(source,imageVersion):
         yaml_file.write( yaml.dump(data, default_flow_style=False))
 
 
-# UpdateChartFile("/home/hanzala/Public/stakater/stakater-nordmart-inventory/deploy/Chart.yaml","abcv-1.2.3")
+def GitCommit(repo,message,push=False):
+   try: 
+    repo.git.add(update=True)
+    repo.index.commit(message)
+    if(push):
+         origin = repo.remote(name='origin')
+         origin.push()
+   except:
+      print('Some error occured while pushing the code') 
 
 
-# GitClone("https://github.com/stakater/update-gitops-task","/tmp/my-file","dummy-user","ghp_LajGx29I3Z9f9hAdZ7aRsdfdfUeRrUkUL1WNKIE")
+
+# repo = GitClone("https://github.com/hanzala1234/py-script-test-temp","/tmp/file-123","dummy_user","ghp_FlX0tsdfsfsdRLN1KfH6sO8ujuS0T961nt13Fg6pH")
+# UpdateChartFile(repo.working_dir+"/Chart.yaml","2.2.5")
+# GitCommit(repo,"Update chart file",True)
+
