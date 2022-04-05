@@ -14,16 +14,14 @@ def GitClone(repo,dest,user="",password=""):
    
 
 
-def UpdateChartFile(source,imageVersion):
+def UpdateChartFile(path,version):
      
-     stream = open(source, 'r')
-     data = yaml.load(stream,Loader=yaml.FullLoader)
+     data = getYamlData(path)
 
-     data["version"] = imageVersion 
-     data["dependencies"][0]["version"] = imageVersion
+     data["version"] = version 
+     data["dependencies"][0]["version"] = version
 
-     with open(source, 'w') as yaml_file:
-        yaml_file.write( yaml.dump(data, default_flow_style=False))
+     WriteYaml(path,data)
 
 
 def GitCommit(repo,message,push=False):
@@ -41,11 +39,16 @@ def SetGitConfig(repo,user,email):
     repo.config_writer().set_value("user","email", email).release()
 
 
+def WriteYaml(path,data):
+      with open(path, 'w') as yaml_file:
+        yaml_file.write( yaml.dump(data, default_flow_style=False))
+
+def GetYamlData(path):
+     stream = open(path, 'r')
+     data = yaml.load(stream,Loader=yaml.FullLoader)
+     return data
 
 
 
-# repo = GitClone("https://github.com/hanzala1234/py-script-test-temp","/tmp/file-123","dummy_user","ghp_FlX0tKARLsdfdfsdfH6sO8ujuS0T961nt13Fg6pH")
-# UpdateChartFile(repo.working_dir+"/Chart.yaml","2.2.5")
-# GitCommit(repo,"Update chart file",True)
-# SetGitConfig(repo,"hanzala1234","muhammadhanzala12@gmail.com")
+
 
