@@ -34,11 +34,18 @@ def GitCommit(repo,message,push=False):
          origin = repo.remote(name='origin')
          origin.push()
    except:
-      print('Some error occured while pushing the code') 
+      print('Some error occured while pushing the code')
+
+def SetGitConfig(repo,user,email):
+    repo.config_writer().set_value("user","name",user).release()
+    repo.config_writer().set_value("user","email", email).release()
 
 
 
-# repo = GitClone("https://github.com/hanzala1234/py-script-test-temp","/tmp/file-123","dummy_user","ghp_FlX0tsdfsfsdRLN1KfH6sO8ujuS0T961nt13Fg6pH")
+
+
+# repo = GitClone("https://github.com/hanzala1234/py-script-test-temp","/tmp/file-123","dummy_user","ghp_FlX0tKARLsdfdfsdfH6sO8ujuS0T961nt13Fg6pH")
 # UpdateChartFile(repo.working_dir+"/Chart.yaml","2.2.5")
 # GitCommit(repo,"Update chart file",True)
+# SetGitConfig(repo,"hanzala1234","muhammadhanzala12@gmail.com")
 
