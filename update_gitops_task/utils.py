@@ -3,8 +3,6 @@ from git import Repo
 import yaml
 import re
 
-
-
 def GitClone(repo,dest,user="",password=""):
    if(user!="" and password != ""):
          index = repo.find("github")
@@ -12,17 +10,13 @@ def GitClone(repo,dest,user="",password=""):
    cloned_repo=Repo.clone_from(repo,dest)
    return cloned_repo
    
-
-
 def UpdateChartFile(path,version):
      
      data = getYamlData(path)
-
      data["version"] = version 
      data["dependencies"][0]["version"] = version
 
      WriteYaml(path,data)
-
 
 def GitCommit(repo,message,push=False):
    try: 
@@ -37,7 +31,6 @@ def GitCommit(repo,message,push=False):
 def SetGitConfig(repo,user,email):
     repo.config_writer().set_value("user","name",user).release()
     repo.config_writer().set_value("user","email", email).release()
-
 
 def WriteYaml(path,data):
       with open(path, 'w') as yaml_file:
