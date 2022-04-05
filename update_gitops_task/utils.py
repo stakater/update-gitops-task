@@ -47,8 +47,3 @@ def GetYamlData(path):
      stream = open(path, 'r')
      data = yaml.load(stream,Loader=yaml.FullLoader)
      return data
-
-
-
-
-
