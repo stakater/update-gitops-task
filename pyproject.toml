@@ -3,8 +3,7 @@
 [build-system]
 requires = [
     "setuptools>=42",
-    "wheel",
-    "GitPython==3.1.27"
+    "wheel"
 
 ]
 build-backend = "setuptools.build_meta"
