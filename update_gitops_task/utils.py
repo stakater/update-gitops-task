@@ -14,7 +14,7 @@ def GitClone(repo,dest,user="",password=""):
 #Update Chart file 
 def UpdateChartFile(path,version):
      
-     data = getYamlData(path)
+     data = GetYamlData(path)
      data["version"] = version 
      data["dependencies"][0]["version"] = version
 
