@@ -1,4 +1,4 @@
-frOM registry.access.redhat.com/ubi7/python-38
+FROM registry.access.redhat.com/ubi7/python-38
 
 USER 0
 WORKDIR /src/update-gitops-task
