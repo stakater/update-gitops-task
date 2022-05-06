@@ -72,3 +72,4 @@ This function returns dict object from yaml file. it takes following parameters
 ```
 
 **Return:**  data object 
+
