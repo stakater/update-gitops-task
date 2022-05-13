@@ -23,13 +23,14 @@ def UpdateChartFile(path,version):
 # Add index, commit and optional push
 def GitCommit(repo,message,push=False):
    try: 
-    repo.git.add(update=True)
+    repo.git.add(repo.working_dir)
     repo.index.commit(message)
     if(push):
+         print("Pushing repository")
          origin = repo.remote(name='origin')
          origin.push()
-   except:
-      print('Some error occured while pushing the code')
+   except Exception as e:
+      print('Some error occured while pushing the code'+ e)
 
 # Set global git config 
 def SetGitConfig(repo,user,email):
@@ -46,4 +47,3 @@ def GetYamlData(path):
      stream = open(path, 'r')
      data = yaml.load(stream,Loader=yaml.FullLoader)
      return data
-
