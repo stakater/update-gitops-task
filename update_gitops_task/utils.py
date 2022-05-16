@@ -11,14 +11,17 @@ def GitClone(repo,dest,user="",password=""):
         elif repo.find("gitlab") != -1:
           index = repo.find("gitlab")
         repo=repo[:index]+user+":"+password+"@"+repo[index:]
+   print("Cloning Git repo....")
    cloned_repo=Repo.clone_from(repo,dest)
+   print("done.")
    return cloned_repo
 
+#Update Chart file
 def UpdateChartFile(path,version):     
-     data = GetYamlData(path)
-     data["version"] = version 
-     data["dependencies"][0]["version"] = version
-     WriteYaml(path,data)
+     print("Updating chart file....")
+     UpdateYamlFile(path,["version"],version)
+     UpdateYamlFile(path,["dependencies",0,"version"],version)
+     print("done")
 
 # Add index, commit and optional push
 def GitCommit(repo,message,push=False):
@@ -26,9 +29,10 @@ def GitCommit(repo,message,push=False):
     repo.git.add(repo.working_dir)
     repo.index.commit(message)
     if(push):
-         print("Pushing repository")
+         print("Pushing repository...")
          origin = repo.remote(name='origin')
          origin.push()
+         print("Done")
    except Exception as e:
       print('Some error occured while pushing the code'+ e)
 
@@ -47,3 +51,20 @@ def GetYamlData(path):
      stream = open(path, 'r')
      data = yaml.load(stream,Loader=yaml.FullLoader)
      return data
+
+
+def setInDict(dataDict, mapList, value): 
+    for k in mapList[:-1]: dataDict = dataDict[k]
+    dataDict[mapList[-1]] = value
+
+
+def UpdateYamlFile(path,location,value):
+   data = GetYamlData(path)
+   setInDict(data,location,value)
+   print("setting value of "+ ".".join(str(l) for l in location ) + " to "+ value + "..." )
+   WriteYaml(path,data)
+   print("done")
+ 
+
+
+

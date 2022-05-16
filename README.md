@@ -73,3 +73,20 @@ This function returns dict object from yaml file. it takes following parameters
 
 **Return:**  data object 
 
+
+
+
+### UpdateYamlFile
+
+This function update yaml file. it takes following parameters
+
+- path: path of yaml file to read data from
+- location: path to update
+- value: value to be updated
+
+#### Example
+``` 
+ UpdateYamlFile("01-gabbar/stakater-nordmart-review/01-dev/values.yaml",["deployment","image","tag"],"1.1.0")
+```
+
+**Return:**  nil 
