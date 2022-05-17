@@ -13,8 +13,8 @@ def GitClone(repo,dest,email,user,password=""):
         repo=repo[:index]+user+":"+password+"@"+repo[index:]
    print("Cloning Git repo....")
    cloned_repo=Repo.clone_from(repo,dest)
-   repo.config_writer().set_value("user","name",user).release()
-   repo.config_writer().set_value("user","email", email).release()
+   cloned_repo.config_writer().set_value("user","name",user).release()
+   cloned_repo.config_writer().set_value("user","email", email).release()
    print("done.")
    return cloned_repo
 
