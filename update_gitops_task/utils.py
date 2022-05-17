@@ -15,7 +15,7 @@ def GitClone(repo,dest,email,user,password=""):
    cloned_repo=Repo.clone_from(repo,dest)
    cloned_repo.config_writer().set_value("user","name",user).release()
    cloned_repo.config_writer().set_value("user","email", email).release()
-   print("done.")
+   print("done")
    return cloned_repo
 
 #Update Chart file
@@ -34,7 +34,7 @@ def GitCommit(repo,message,push=False):
          print("Pushing repository...")
          origin = repo.remote(name='origin')
          origin.push()
-         print("Done")
+         print("done")
    except Exception as e:
       print('Some error occured while pushing the code'+ e)
 
