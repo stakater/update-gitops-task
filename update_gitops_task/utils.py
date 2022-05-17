@@ -55,7 +55,7 @@ def setInDict(dataDict, mapList, value):
     dataDict[mapList[-1]] = value
 
 
-def UpdateYamlFile(path,location,value,log=False):
+def UpdateYamlFile(path,location,value,log=True):
    data = GetYamlData(path)
    setInDict(data,location,value)
    print("setting value of "+ ".".join(str(l) for l in location ) + " to "+ value + "..." ) if log else 0
