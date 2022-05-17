@@ -3,7 +3,7 @@
 
 ## Util Functions
 
-### GitClone
+### git_clone
 
 This function clone your git repository. it takes following parameters 
 
@@ -17,7 +17,7 @@ This function clone your git repository. it takes following parameters
  ```
  repo = GitClone("https://github.com/hanzala1234/py-script-test-temp","/tmp/file-123","my_user","dummy_password")
 ```
-### UpdateChartFile
+### update_chart_file
 
 This function update dependency and chart version of Chart.yaml. it takes following parameters
 
@@ -36,37 +36,7 @@ This function update dependency and chart version of Chart.yaml. it takes follow
  SetGitConfig(repo,"user1","user1@gmail.com")
 ```
 
-###  WriteYaml
-
-This function writes dict object into yaml file. It takes following parameters
-
-- path: path of yaml file to write data
-- data: data to write to yaml file
-
-#### Example
-``` 
- WriteYaml(path,data)
-```
-
-**Return:**  nil 
-
-### GetYamlData
-
-This function returns dict object from yaml file. it takes following parameters
-
-- path: path of yaml file to read data from
-
-#### Example
-``` 
- getYamlData(path)
-```
-
-**Return:**  data object 
-
-
-
-
-### UpdateYamlFile
+### update_yaml_file
 
 This function update yaml file. it takes following parameters
 
@@ -82,7 +52,7 @@ This function update yaml file. it takes following parameters
 **Return:**  nil 
 
 
-### GetTenantByNamespace
+### get_tenant_by_namespace
 
 This function get tenant name by namespace if namespace is following <tenant>-<environment> convention. it takes following parameters
 
