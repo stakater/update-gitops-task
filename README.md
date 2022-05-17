@@ -31,16 +31,6 @@ This function update dependency and chart version of Chart.yaml. it takes follow
  UpdateChartFile(repo.working_dir+"/Chart.yaml","2.2.7")
 ```
 
-### SetGitConfig
-
-This function set global git config username and password. it takes following parameters
-
-- repo: repo object (required)
-- user: username of git user (required)
-- email: email of git user (required)
-
-**Return:** nil
-
 #### Example
 ``` 
  SetGitConfig(repo,"user1","user1@gmail.com")
@@ -90,3 +80,18 @@ This function update yaml file. it takes following parameters
 ```
 
 **Return:**  nil 
+
+
+### GetTenantByNamespace
+
+This function get tenant name by namespace if namespace is following <tenant>-<environment> convention. it takes following parameters
+
+- namespace: Name of namespace
+
+
+#### Example
+``` 
+ GetTenantByNamespace("gabbar-build")
+```
+
+**Return:**  tenant 
