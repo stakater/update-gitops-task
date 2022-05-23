@@ -38,7 +38,7 @@ def git_commit(repo,message,push=False):
    except Exception as e:
       print('Some error occured while pushing the code'+ e)
 
-
+# Update key in yaml file at key located in location parameter
 def update_yaml_file(path,location,value,log=True):
    data = helpers.get_yaml_data(path)
    helpers.set_in_dict(data,location,value)
@@ -51,7 +51,14 @@ def get_tenant_by_namespace(namespace):
   tenant = namespace[:index]
   return tenant
 
-
+def key_exist(path, location): 
+    data = helpers.get_yaml_data(path)
+    for k in location:
+       try:
+          data = data[k]
+       except:
+           return False
+    return True
 
 
 

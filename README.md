@@ -65,3 +65,18 @@ This function get tenant name by namespace if namespace is following <tenant>-<e
 ```
 
 **Return:**  tenant 
+
+### key_exist
+
+Check if key exist in yaml file. it takes following parameters
+
+- path: path of yaml file
+- location: path to find key in yaml file
+
+
+#### Example
+``` 
+ key_exist("helm/values.yaml",["deployment","image","tag"])
+```
+
+**Return:** boolean 
