@@ -80,3 +80,18 @@ Check if key exist in yaml file. it takes following parameters
 ```
 
 **Return:** boolean 
+
+### get_value
+
+Get value of key from yaml file. it takes following parameters
+
+- path: path of yaml file
+- location: path to find key in yaml file
+
+
+#### Example
+``` 
+ get_value("helm/values.yaml",["deployment","image","tag"])
+```
+
+**Return:** value 

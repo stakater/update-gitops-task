@@ -60,5 +60,11 @@ def key_exist(path, location):
            return False
     return True
 
+def get_value(path, location): 
+  data = helpers.get_yaml_data(path)
+  for k in location:
+      data = data[k]
+  return data
+
 
 
